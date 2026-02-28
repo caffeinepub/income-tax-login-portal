@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A replica/companion web app of India's official Income Tax portal (incometax.gov.in) — pixel-perfect design, branding, and layout. Includes homepage, navigation (e-Filing, Tax Services, Forms, Help), Tax Calculator (Old vs New Regime FY 2024-25), ITR forms directory, PAN/TAN services, refund status info, news & updates. All action buttons redirect to the real incometax.gov.in portal for official login-required actions.",
+  "architectural_notes": [
+    "All login-required actions (file returns, check refund, PAN verification) must redirect to official incometax.gov.in — no backend auth required.",
+    "App is a companion/replica — no actual government data API calls; all live data links point to incometax.gov.in."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Ashoka Chakra / Government of India emblem circular seal icon in navy blue and gold (ashoka-emblem.dim_128x128.png)\n- Income Tax Department India header banner background with subtle watermark pattern in navy blue (itd-header-banner.dim_1200x80.png)\n- Indian flag color strip banner — saffron, white, green horizontal stripes (flag-strip.dim_800x24.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-homepage-that-mirrors-incometax-gov-in-s-design-layout-and-color-scheme-include-a-hero-banner-with-the-official-portal-branding-blue-navy-and-saffron-orange-colors-ashoka-emblem-income-tax-department-government-of-india-header-a-marquee-ticker-for-news-updates-and-quick-access-tiles-for-major-services-e-filing-tax-calculator-forms-pan-tan-refund-status",
+      "title": "Create a Homepage that mirrors incometax.gov.in's design, layout, and color scheme. Include a hero banner with the official portal branding (blue/navy and saffron/orange colors, Ashoka emblem, 'Income Tax Department - Government of India' header), a marquee/ticker for news & updates, and quick-access tiles for major services (e-Filing, Tax Calculator, Forms, PAN/TAN, Refund Status).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-top-navigation-bar-matching-the-official-incometax-gov-in-structure-with-dropdown-menus-for-home-about-us-e-filing-itr-filing-view-filed-returns-upload-form-16-tax-services-tax-calculator-form-26as-ais-forms-itr-1-through-itr-7-form-15g-15h-downloads-help-faq-all-items-that-require-official-login-must-open-the-corresponding-url-on-incometax-gov-in-in-a-new-tab",
+      "title": "Build a top navigation bar matching the official incometax.gov.in structure with dropdown menus for: Home, About Us, e-Filing (ITR Filing, View Filed Returns, Upload Form 16), Tax Services (Tax Calculator, Form 26AS, AIS), Forms (ITR-1 through ITR-7, Form 15G/15H), Downloads, Help & FAQ. All items that require official login must open the corresponding URL on incometax.gov.in in a new tab.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-tax-calculator-page-supporting-both-old-regime-and-new-regime-for-fy-2024-25-ay-2025-26-include-inputs-for-annual-income-age-group-below-60-60-80-above-80-deductions-under-80c-80d-80tta-hra-old-regime-only-and-display-a-detailed-tax-breakdown-gross-income-deductions-taxable-income-tax-slabs-surcharge-health-education-cess-at-4-and-net-tax-payable-show-a-side-by-side-comparison-of-both-regimes",
+      "title": "Build a Tax Calculator page supporting both Old Regime and New Regime for FY 2024-25 (AY 2025-26). Include inputs for annual income, age group (below 60, 60-80, above 80), deductions under 80C/80D/80TTA/HRA (Old Regime only), and display a detailed tax breakdown (gross income, deductions, taxable income, tax slabs, surcharge, health & education cess at 4%, and net tax payable). Show a side-by-side comparison of both regimes.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-itr-forms-directory-page-listing-all-itr-forms-itr-1-sahaj-itr-2-itr-3-itr-4-sugam-itr-5-itr-6-itr-7-with-a-brief-description-of-who-should-use-each-form-and-direct-download-view-links-pointing-to-the-official-incometax-gov-in-forms-page",
+      "title": "Create an ITR Forms Directory page listing all ITR forms (ITR-1 Sahaj, ITR-2, ITR-3, ITR-4 Sugam, ITR-5, ITR-6, ITR-7) with a brief description of who should use each form and direct download/view links pointing to the official incometax.gov.in forms page.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-pan-tan-services-section-page-listing-pan-related-services-apply-for-new-pan-links-to-nsdl-uti-portal-apply-for-changes-correction-in-pan-link-pan-with-aadhaar-pan-verification-apply-for-tan-tan-verification-each-service-card-must-have-a-description-and-a-button-linking-to-the-respective-official-government-url-incometax-gov-in-onlineservices-nsdl-com-or-tin-tin-nsdl-com-as-appropriate",
+      "title": "Create a PAN/TAN Services section page listing PAN-related services: Apply for New PAN (links to NSDL/UTI portal), Apply for Changes/Correction in PAN, Link PAN with Aadhaar, PAN Verification, Apply for TAN, TAN Verification. Each service card must have a description and a button linking to the respective official government URL (incometax.gov.in, onlineservices.nsdl.com, or tin.tin.nsdl.com as appropriate).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-refund-status-page-that-shows-instructions-on-how-to-check-income-tax-refund-status-and-includes-a-prominent-button-link-directing-users-to-the-official-nsdl-refund-status-portal-tin-tin-nsdl-com-oltas-refundstatuslogin-html-and-the-incometax-gov-in-e-filing-portal-display-informational-steps-how-long-refunds-take-common-reasons-for-delay-and-helpline-numbers",
+      "title": "Create a Refund Status page that shows instructions on how to check income tax refund status, and includes a prominent button/link directing users to the official NSDL refund status portal (tin.tin.nsdl.com/oltas/refundstatuslogin.html) and the incometax.gov.in e-Filing portal. Display informational steps: how long refunds take, common reasons for delay, and helpline numbers.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-news-updates-section-also-appearing-as-a-ticker-on-the-homepage-that-displays-recent-announcements-relevant-to-income-tax-such-as-filing-deadlines-new-circulars-and-regime-changes-for-fy-2024-25-content-should-be-static-but-realistic-mirroring-the-style-of-the-official-portal-s-updates-feed-include-a-view-all-link-pointing-to-https-www-incometax-gov-in-iec-foportal",
+      "title": "Add a News & Updates section (also appearing as a ticker on the homepage) that displays recent announcements relevant to income tax, such as filing deadlines, new circulars, and regime changes for FY 2024-25. Content should be static but realistic, mirroring the style of the official portal's updates feed. Include a 'View All' link pointing to https://www.incometax.gov.in/iec/foportal/.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-prominent-login-to-e-filing-portal-button-on-the-homepage-and-in-the-navigation-that-redirects-users-to-https-eportal-incometax-gov-in-iec-foservicesapp-login-in-a-new-tab-also-add-a-register-link-redirecting-to-https-eportal-incometax-gov-in-iec-foservicesapp-register-the-existing-internal-login-register-pages-can-be-retained-for-the-app-s-own-user-management-but-the-primary-cta-should-clearly-link-to-the-official-portal",
+      "title": "Add a prominent 'Login to e-Filing Portal' button on the homepage and in the navigation that redirects users to https://eportal.incometax.gov.in/iec/foservicesapp/#/login in a new tab. Also add a 'Register' link redirecting to https://eportal.incometax.gov.in/iec/foservicesapp/#/register. The existing internal login/register pages can be retained for the app's own user management but the primary CTA should clearly link to the official portal.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-tanstack-router-routes-to-include-the-new-pages-home-or-update-to-serve-as-the-portal-homepage-tax-calculator-itr-forms-pan-tan-services-refund-status-news-updates-ensure-the-portallayout-wraps-all-pages-and-navigation-links-work-correctly-between-internal-pages",
+      "title": "Update the TanStack Router routes to include the new pages: /home (or update / to serve as the portal homepage), /tax-calculator, /itr-forms, /pan-tan-services, /refund-status, /news-updates. Ensure the PortalLayout wraps all pages and navigation links work correctly between internal pages.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-disclaimer-banner-strip-visible-on-every-page-stating-this-is-an-informational-companion-app-for-official-tax-filing-and-government-services-visit-incometax-gov-in-with-a-clickable-link-style-it-in-a-government-notice-style-amber-yellow-background-with-dark-text",
+      "title": "Add a disclaimer banner/strip visible on every page stating: 'This is an informational companion app. For official tax filing and government services, visit incometax.gov.in.' with a clickable link. Style it in a government-notice style (amber/yellow background with dark text).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Homepage mirroring incometax.gov.in design, colors, and layout",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Navigation matching official site structure (e-Filing, Tax Services, Forms, Help, etc.)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Tax Calculator for Old vs New Regime FY 2024-25",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "ITR forms directory with links to official forms",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "PAN/TAN services section linked to official portal",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Refund status info section redirecting to official portal",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "All action buttons/links redirect to actual incometax.gov.in pages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Official Indian Income Tax branding — colors, logo placement, and styling",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Income Tax India Portal",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

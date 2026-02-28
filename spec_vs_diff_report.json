@@ -1,0 +1,67 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T16:02:53.834Z",
+  "summary": "The diff implements the vast majority of the requested requirements. All 10 REQs have corresponding implementations. However, a few specific acceptance criteria have gaps: the navigation bar is missing 'About Us' as a top-level menu item, Form 15G/15H links are absent from the Forms dropdown, and the required images (Ashoka emblem, header banner, flag strip) are not referenced in the diff.",
+  "missing_requirements": [
+    {
+      "requirement": "Navigation bar must include 'About Us' as a top-level dropdown item matching incometax.gov.in structure",
+      "reason": "The NAV_ITEMS array in PortalLayout.tsx does not include an 'About Us' menu item. The spec explicitly requires it alongside Home, e-Filing, Tax Services, Forms, Downloads, Help & FAQ.",
+      "evidence": [
+        "frontend/src/components/PortalLayout.tsx"
+      ]
+    },
+    {
+      "requirement": "Forms dropdown must include ITR-1 through ITR-7 and Form 15G/15H links as individual dropdown items",
+      "reason": "The Forms dropdown in NAV_ITEMS only contains 'ITR Forms' (internal link) and 'All Forms & Downloads' (external). Individual ITR form links and Form 15G/15H entries are not present as dropdown items.",
+      "evidence": [
+        "frontend/src/components/PortalLayout.tsx"
+      ]
+    },
+    {
+      "requirement": "Required image assets: Ashoka Chakra emblem (ashoka-emblem.dim_128x128.png), ITD header banner (itd-header-banner.dim_1200x80.png), and Indian flag strip (flag-strip.dim_800x24.png)",
+      "reason": "No image files are added in the diff. The build request explicitly requires these three image assets to be present.",
+      "evidence": []
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Ashoka emblem image should appear in the header using the provided asset file",
+      "reason": "The header in PortalLayout.tsx does not reference the ashoka-emblem image asset file. Since no image assets were added, the emblem cannot be rendered as specified.",
+      "evidence": [
+        "frontend/src/components/PortalLayout.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Additional PAN services beyond the specified six were added: 'PAN Status Check', 'Instant e-PAN', and 'TAN Status Check' cards",
+      "reason": "The spec lists exactly six PAN/TAN services: Apply for New PAN, Apply for Changes/Correction in PAN, Link PAN with Aadhaar, PAN Verification, Apply for TAN, TAN Verification. The diff adds extra services not requested.",
+      "evidence": [
+        "frontend/src/pages/PANTANServicesPage.tsx"
+      ]
+    },
+    {
+      "description": "PortalNavigation.tsx stub file created as an empty export with no functionality",
+      "reason": "A file frontend/src/components/PortalNavigation.tsx was added containing only an empty export with a comment. This file was not requested and serves no functional purpose.",
+      "evidence": [
+        "frontend/src/components/PortalNavigation.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.82,
+  "changed_files": [
+    "frontend/src/App.tsx",
+    "frontend/src/components/DisclaimerBanner.tsx",
+    "frontend/src/components/NewsTicker.tsx",
+    "frontend/src/components/PortalLayout.tsx",
+    "frontend/src/components/PortalNavigation.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ITRFormsPage.tsx",
+    "frontend/src/pages/NewsUpdatesPage.tsx",
+    "frontend/src/pages/PANTANServicesPage.tsx",
+    "frontend/src/pages/RefundStatusPage.tsx",
+    "frontend/src/pages/TaxCalculatorPage.tsx",
+    "frontend/src/utils/taxCalculations.ts",
+    "project_state.json"
+  ]
+}

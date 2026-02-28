@@ -1,0 +1,166 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T16:02:53.839Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 10,
+    "implemented": 10,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a Homepage that mirrors incometax.gov.in's design, layout, and color scheme. Include a hero banner with the official portal branding (blue/navy and saffron/orange colors, Ashoka emblem, 'Income Tax Department - Government of India' header), a marquee/ticker for news & updates, and quick-access tiles for major services (e-Filing, Tax Calculator, Forms, PAN/TAN, Refund Status).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/PortalLayout.tsx",
+          "frontend/src/components/NewsTicker.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/PortalLayout.tsx",
+          "frontend/src/components/NewsTicker.tsx"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Add a disclaimer banner/strip visible on every page stating: 'This is an informational companion app. For official tax filing and government services, visit incometax.gov.in.' with a clickable link. Style it in a government-notice style (amber/yellow background with dark text).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/DisclaimerBanner.tsx",
+          "frontend/src/components/PortalLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/DisclaimerBanner.tsx",
+          "frontend/src/components/PortalLayout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Build a top navigation bar matching the official incometax.gov.in structure with dropdown menus for: Home, About Us, e-Filing (ITR Filing, View Filed Returns, Upload Form 16), Tax Services (Tax Calculator, Form 26AS, AIS), Forms (ITR-1 through ITR-7, Form 15G/15H), Downloads, Help & FAQ. All items that require official login must open the corresponding URL on incometax.gov.in in a new tab.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PortalNavigation.tsx",
+          "frontend/src/components/PortalLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PortalNavigation.tsx",
+          "frontend/src/components/PortalLayout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Build a Tax Calculator page supporting both Old Regime and New Regime for FY 2024-25 (AY 2025-26). Include inputs for annual income, age group (below 60, 60-80, above 80), deductions under 80C/80D/80TTA/HRA (Old Regime only), and display a detailed tax breakdown (gross income, deductions, taxable income, tax slabs, surcharge, health & education cess at 4%, and net tax payable). Show a side-by-side comparison of both regimes.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/TaxCalculatorPage.tsx",
+          "frontend/src/utils/taxCalculations.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/TaxCalculatorPage.tsx",
+          "frontend/src/utils/taxCalculations.ts"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Create an ITR Forms Directory page listing all ITR forms (ITR-1 Sahaj, ITR-2, ITR-3, ITR-4 Sugam, ITR-5, ITR-6, ITR-7) with a brief description of who should use each form and direct download/view links pointing to the official incometax.gov.in forms page.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ITRFormsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ITRFormsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Create a PAN/TAN Services section page listing PAN-related services: Apply for New PAN (links to NSDL/UTI portal), Apply for Changes/Correction in PAN, Link PAN with Aadhaar, PAN Verification, Apply for TAN, TAN Verification. Each service card must have a description and a button linking to the respective official government URL (incometax.gov.in, onlineservices.nsdl.com, or tin.tin.nsdl.com as appropriate).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/PANTANServicesPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/PANTANServicesPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Create a Refund Status page that shows instructions on how to check income tax refund status, and includes a prominent button/link directing users to the official NSDL refund status portal (tin.tin.nsdl.com/oltas/refundstatuslogin.html) and the incometax.gov.in e-Filing portal. Display informational steps: how long refunds take, common reasons for delay, and helpline numbers.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/RefundStatusPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/RefundStatusPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add a News & Updates section (also appearing as a ticker on the homepage) that displays recent announcements relevant to income tax, such as filing deadlines, new circulars, and regime changes for FY 2024-25. Content should be static but realistic, mirroring the style of the official portal's updates feed. Include a 'View All' link pointing to https://www.incometax.gov.in/iec/foportal/.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/NewsUpdatesPage.tsx",
+          "frontend/src/components/NewsTicker.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/NewsUpdatesPage.tsx",
+          "frontend/src/components/NewsTicker.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add a prominent 'Login to e-Filing Portal' button on the homepage and in the navigation that redirects users to https://eportal.incometax.gov.in/iec/foservicesapp/#/login in a new tab. Also add a 'Register' link redirecting to https://eportal.incometax.gov.in/iec/foservicesapp/#/register. The existing internal login/register pages can be retained for the app's own user management but the primary CTA should clearly link to the official portal.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/PortalNavigation.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/PortalNavigation.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Update the TanStack Router routes to include the new pages: /home (or update / to serve as the portal homepage), /tax-calculator, /itr-forms, /pan-tan-services, /refund-status, /news-updates. Ensure the PortalLayout wraps all pages and navigation links work correctly between internal pages.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/PortalNavigation.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/PortalNavigation.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/ashoka-emblem.dim_128x128.png",
+    "frontend/public/assets/generated/flag-strip.dim_800x24.png",
+    "frontend/public/assets/generated/itd-header-banner.dim_1200x80.png",
+    "frontend/src/App.tsx",
+    "frontend/src/components/DisclaimerBanner.tsx",
+    "frontend/src/components/NewsTicker.tsx",
+    "frontend/src/components/PortalLayout.tsx",
+    "frontend/src/components/PortalNavigation.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ITRFormsPage.tsx",
+    "frontend/src/pages/NewsUpdatesPage.tsx",
+    "frontend/src/pages/PANTANServicesPage.tsx",
+    "frontend/src/pages/RefundStatusPage.tsx",
+    "frontend/src/pages/TaxCalculatorPage.tsx",
+    "frontend/src/utils/taxCalculations.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

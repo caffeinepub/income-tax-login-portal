@@ -1,0 +1,219 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "India Income Tax Portal Replica with Full Navigation, Calculator & Official Links",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a Homepage that mirrors incometax.gov.in's design with hero banner, Ashoka emblem, navy/saffron color scheme, news ticker, and quick-access service tiles",
+      "acceptanceCriteria": [
+        "Homepage renders with navy/blue header matching incometax.gov.in branding",
+        "Ashoka emblem and 'Income Tax Department - Government of India' text appears in header",
+        "Scrolling news & updates ticker/marquee is visible",
+        "Quick-access service tiles for e-Filing, Tax Calculator, Forms, PAN/TAN, Refund Status are displayed",
+        "Footer with disclaimer and government attribution is present"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the main homepage component featuring a hero banner with official portal branding (navy blue and saffron colors), the Ashoka emblem image (frontend/public/assets/generated/ashoka-emblem.dim_128x128.png), 'Income Tax Department - Government of India' header text, a scrolling news ticker/marquee showing recent tax announcements, and a grid of quick-access service tiles linking to internal pages (/tax-calculator, /itr-forms, /pan-tan-services, /refund-status) and external government portal URLs for e-Filing. Use the government-portal color tokens defined in index.css (navy, saffron) and include footer content with disclaimer and government attribution."
+        },
+        {
+          "path": "frontend/src/components/PortalLayout.tsx",
+          "operation": "modify",
+          "description": "Update the header section to use the generated Ashoka emblem image (frontend/public/assets/generated/ashoka-emblem.dim_128x128.png) and ensure the branding matches incometax.gov.in styling with navy blue header background and saffron accent colors. Add the portal banner background image (frontend/public/assets/generated/portal-banner-bg.dim_1200x120.png) if appropriate for the header banner area."
+        },
+        {
+          "path": "frontend/src/components/NewsTicker.tsx",
+          "operation": "create",
+          "description": "Create a reusable news ticker/marquee component that displays a horizontally scrolling feed of tax-related announcements and updates. Include static but realistic content such as filing deadlines, new circulars, and FY 2024-25 regime changes. Use CSS animations for smooth scrolling and style with government portal theme colors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build a top navigation bar matching incometax.gov.in structure with dropdown menus for Home, About Us, e-Filing, Tax Services, Forms, Downloads, Help & FAQ, linking to official URLs",
+      "acceptanceCriteria": [
+        "Navigation bar has all major sections matching incometax.gov.in",
+        "Dropdown menus open on hover/click for each section",
+        "Each action link opens the correct incometax.gov.in URL in a new tab",
+        "Navigation is responsive and collapses to a hamburger menu on mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PortalNavigation.tsx",
+          "operation": "create",
+          "description": "Create a comprehensive navigation component with dropdown menus matching the official incometax.gov.in structure. Include sections: Home (links to /), About Us, e-Filing (ITR Filing, View Filed Returns, Upload Form 16 - all link to https://eportal.incometax.gov.in in new tab), Tax Services (Tax Calculator links to /tax-calculator, Form 26AS and AIS link to official portal), Forms (links to /itr-forms), Downloads, Help & FAQ. Each external link must use target='_blank' rel='noopener noreferrer'. Implement responsive design with hamburger menu for mobile viewports using Tailwind breakpoints and government portal theme colors."
+        },
+        {
+          "path": "frontend/src/components/PortalLayout.tsx",
+          "operation": "modify",
+          "description": "Integrate the PortalNavigation component into the layout banner area, positioning it below the header branding section. Ensure the navigation bar spans the full width and maintains the government portal styling with navy background and proper spacing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build a Tax Calculator page supporting Old Regime and New Regime for FY 2024-25 with detailed tax breakdown and side-by-side comparison",
+      "acceptanceCriteria": [
+        "User can select Old Regime or New Regime or view both",
+        "Tax is computed correctly using FY 2024-25 slabs for both regimes",
+        "Age group affects basic exemption limit (2.5L / 3L / 5L for Old Regime)",
+        "New Regime uses updated slabs: 0-3L nil, 3-7L 5%, 7-10L 10%, 10-12L 15%, 12-15L 20%, above 15L 30%",
+        "Standard deduction of ₹75,000 applied for New Regime",
+        "4% cess applied on total tax",
+        "Surcharge applied correctly for incomes above ₹50L",
+        "Side-by-side comparison of tax liability under both regimes is displayed",
+        "Rebate under Section 87A applied where applicable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TaxCalculatorPage.tsx",
+          "operation": "create",
+          "description": "Create a comprehensive tax calculator page with input forms for annual income, age group selection (below 60, 60-80, above 80), and regime selection (Old, New, or Both). For Old Regime, include deduction inputs for 80C, 80D, 80TTA, and HRA. Implement client-side calculation logic using FY 2024-25 tax slabs: Old Regime with age-based exemption limits and New Regime slabs (0-3L nil, 3-7L 5%, 7-10L 10%, 10-12L 15%, 12-15L 20%, above 15L 30%). Apply standard deduction of ₹75,000 for New Regime, compute surcharge for income above ₹50L, add 4% health and education cess, and apply Section 87A rebate where applicable. Display detailed breakdown showing gross income, deductions, taxable income, tax by slab, surcharge, cess, and net tax payable. Show side-by-side comparison when Both is selected. Style with government portal theme colors."
+        },
+        {
+          "path": "frontend/src/utils/taxCalculations.ts",
+          "operation": "create",
+          "description": "Create utility module containing pure functions for tax calculations. Implement calculateOldRegimeTax and calculateNewRegimeTax functions that take income, age, and deductions and return detailed breakdowns. Include helper functions for: applying age-based exemption limits, computing tax by slab, calculating surcharge tiers, applying 4% cess, and computing Section 87A rebate. Ensure all calculations match FY 2024-25 rules exactly as specified in acceptance criteria."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create an ITR Forms Directory page listing all ITR forms with descriptions and official download links",
+      "acceptanceCriteria": [
+        "All 7 ITR forms are listed with name and applicability description",
+        "Download/View button for each form links to the official government portal URL",
+        "Links open in a new tab"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ITRFormsPage.tsx",
+          "operation": "create",
+          "description": "Create an ITR Forms Directory page displaying all seven ITR forms (ITR-1 Sahaj, ITR-2, ITR-3, ITR-4 Sugam, ITR-5, ITR-6, ITR-7) in a card or list layout. For each form, include the form name, a brief description of who should use it (e.g., ITR-1 for salaried individuals with income up to ₹50 lakh, ITR-2 for individuals with capital gains, etc.), and a Download/View button linking to https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-to-you with target='_blank' rel='noopener noreferrer'. Style with government portal theme colors and ensure accessibility."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create a PAN/TAN Services section page listing PAN-related services with official government URLs",
+      "acceptanceCriteria": [
+        "All listed PAN/TAN services are shown as cards or a list",
+        "Each service links to the correct official government URL in a new tab",
+        "Link PAN-Aadhaar card includes the official incometax.gov.in link"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PANTANServicesPage.tsx",
+          "operation": "create",
+          "description": "Create a PAN/TAN Services page displaying service cards for: Apply for New PAN (link to https://www.onlineservices.nsdl.com/paan/endUserRegisterContact.html), Apply for Changes/Correction in PAN (link to NSDL portal), Link PAN with Aadhaar (link to https://www.incometax.gov.in/iec/foportal/), PAN Verification (link to https://www.incometax.gov.in/iec/foportal/), Apply for TAN (link to https://tin.tin.nsdl.com/tan/index.html), and TAN Verification. Each card should include a service description and a prominent button with target='_blank' rel='noopener noreferrer'. Style with government portal theme colors in a responsive grid layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create a Refund Status page with instructions and links to official NSDL and incometax.gov.in refund portals",
+      "acceptanceCriteria": [
+        "Page displays step-by-step instructions for checking refund status",
+        "Button links to official NSDL refund status portal and/or incometax.gov.in",
+        "Links open in a new tab",
+        "Helpline number (1800 103 0025 / 1800 419 0025) is displayed"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/RefundStatusPage.tsx",
+          "operation": "create",
+          "description": "Create a Refund Status information page with step-by-step instructions on how to check income tax refund status. Include prominent buttons linking to https://tin.tin.nsdl.com/oltas/refundstatuslogin.html and https://eportal.incometax.gov.in with target='_blank' rel='noopener noreferrer'. Display informational sections covering: typical refund processing timeline, common reasons for delays, required documents for checking status, and helpline numbers (1800 103 0025 and 1800 419 0025). Style with government portal theme colors and use clear typography for instructional content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add a News & Updates section with static announcements and a 'View All' link to the official portal",
+      "acceptanceCriteria": [
+        "A scrolling ticker on the homepage shows recent news items",
+        "A full News & Updates page lists multiple announcements with dates",
+        "'View All' link redirects to incometax.gov.in"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/NewsUpdatesPage.tsx",
+          "operation": "create",
+          "description": "Create a News & Updates page displaying a list of recent tax-related announcements in reverse chronological order. Include static but realistic content such as: filing deadline extensions, new tax regime notifications for FY 2024-25, TDS rate changes, and circular releases. Each announcement should have a date, headline, and brief description. Add a prominent 'View All Official Announcements' button linking to https://www.incometax.gov.in/iec/foportal/ with target='_blank' rel='noopener noreferrer'. Style with government portal theme colors using card or list layout."
+        },
+        {
+          "path": "frontend/src/components/NewsTicker.tsx",
+          "operation": "modify",
+          "description": "Update the NewsTicker component to include a link to /news-updates for users to view the full news list. Ensure the ticker content mirrors the headlines from the NewsUpdatesPage for consistency."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add prominent 'Login to e-Filing Portal' and 'Register' buttons linking to official government URLs",
+      "acceptanceCriteria": [
+        "Prominent 'Login to e-Filing Portal' button is visible on homepage and in nav",
+        "Button opens https://eportal.incometax.gov.in in a new tab",
+        "'Register on Portal' link is also present linking to official registration URL",
+        "A disclaimer note is shown near these buttons explaining the user will be redirected to the official government portal"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a prominent call-to-action section on the homepage featuring a large 'Login to e-Filing Portal' button linking to https://eportal.incometax.gov.in/iec/foservicesapp/#/login and a 'Register on Portal' link to https://eportal.incometax.gov.in/iec/foservicesapp/#/register, both with target='_blank' rel='noopener noreferrer'. Include a disclaimer notice near these buttons stating: 'You will be redirected to the official Income Tax e-Filing portal for login and registration.' Style prominently with government portal colors (navy/saffron) and position above or within the quick-access service tiles section."
+        },
+        {
+          "path": "frontend/src/components/PortalNavigation.tsx",
+          "operation": "modify",
+          "description": "Add a 'Login to e-Filing' button in the top navigation bar that links to https://eportal.incometax.gov.in/iec/foservicesapp/#/login with target='_blank' rel='noopener noreferrer'. Position it prominently in the navigation (e.g., right side) and style it distinctively with a call-to-action appearance using saffron or contrasting color against the navy navigation background."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Update TanStack Router routes to include all new pages and wire them into the navigation",
+      "acceptanceCriteria": [
+        "All new routes are accessible via URL",
+        "Navigation links correctly route between internal pages",
+        "PortalLayout header and footer appear on all pages",
+        "No 404 errors for any listed route"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the TanStack Router configuration to add routes for the new pages: / (HomePage), /tax-calculator (TaxCalculatorPage), /itr-forms (ITRFormsPage), /pan-tan-services (PANTANServicesPage), /refund-status (RefundStatusPage), and /news-updates (NewsUpdatesPage). Ensure all routes are wrapped with PortalLayout so the header with navigation and footer appear on every page. Remove or update the existing AuthGuard-protected dashboard route since the replica app is informational and does not require authentication for these public pages. Configure the router to handle 404s gracefully."
+        },
+        {
+          "path": "frontend/src/components/PortalNavigation.tsx",
+          "operation": "modify",
+          "description": "Wire the navigation links to the new internal routes. Update Home to link to /, Tax Calculator dropdown item to /tax-calculator, Forms to /itr-forms internally, and ensure other menu items link to external URLs where appropriate. Use TanStack Router's Link component for internal routes and anchor tags with target='_blank' rel='noopener noreferrer' for external URLs. Ensure mobile hamburger menu includes all navigation items."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add a disclaimer banner visible on every page linking to incometax.gov.in",
+      "acceptanceCriteria": [
+        "Disclaimer strip is visible on every page",
+        "Text includes a clickable link to incometax.gov.in",
+        "Styled with amber/yellow background to clearly denote it as a notice"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/DisclaimerBanner.tsx",
+          "operation": "create",
+          "description": "Create a DisclaimerBanner component displaying a notice: 'This is an informational companion app. For official tax filing and government services, visit incometax.gov.in.' with 'incometax.gov.in' as a clickable link to https://www.incometax.gov.in with target='_blank' rel='noopener noreferrer'. Style with an amber/yellow background (e.g., bg-yellow-100 or bg-amber-200), dark text for contrast, and a government-notice appearance (border, padding, centered or full-width). Make it visually distinct as an official notice banner."
+        },
+        {
+          "path": "frontend/src/components/PortalLayout.tsx",
+          "operation": "modify",
+          "description": "Integrate the DisclaimerBanner component into the PortalLayout so it appears on every page. Position it prominently at the top of the page content area (below the header/navigation or above the main content section) to ensure it is immediately visible to users on all routes."
+        }
+      ]
+    }
+  ]
+}

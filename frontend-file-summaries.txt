@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main app component using TanStack Router with routes for login, register, reset-password, and dashboard; wraps all pages in PortalLayout and protects dashboard with AuthGuard.",
+  "frontend/src/components/PortalLayout.tsx": "Government-style portal layout with navy blue header featuring Ashoka emblem, banner with navigation, and footer with disclaimer and caffeine.ai attribution.",
+  "frontend/src/components/AuthGuard.tsx": "Session-based authentication guard using sessionStorage; exports helpers to get/set/clear auth session and redirects unauthenticated users to login.",
+  "frontend/src/components/CaptchaChallenge.tsx": "Client-side math CAPTCHA component generating random arithmetic challenges with a refresh button and real-time answer validation.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations: register user, login user, logout user, reset password, and fetch caller profile.",
+  "frontend/src/utils/validators.ts": "Validation utility functions for PAN, password strength, email, mobile, date of birth, and user ID; includes SHA-256 password hashing via Web Crypto API.",
+  "frontend/src/pages/LoginPage.tsx": "Login page with User ID/Password fields, show/hide password toggle, CAPTCHA challenge, inline error handling, and links to register and reset password.",
+  "frontend/src/pages/RegisterPage.tsx": "New user registration page with full form validation for name, PAN, DOB, user ID, password confirmation, and contact info; calls registerUser backend on submit.",
+  "frontend/src/pages/ResetPasswordPage.tsx": "Two-step password reset page: identity verification (User ID + DOB) then new password entry; shows success confirmation and redirects to login.",
+  "frontend/src/pages/DashboardPage.tsx": "Post-login dashboard with personalized welcome banner, PAN/assessment year display, 8 quick service tiles, status cards, important due dates, and logout functionality.",
+  "frontend/src/index.css": "Global styles with OKLCH government portal color system (navy blue + saffron), Inter/Noto Sans typography, and utility classes for portal-specific colors.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with navy and saffron color palettes, Inter/Noto Sans font families, and portal-specific shadow tokens."
+}
